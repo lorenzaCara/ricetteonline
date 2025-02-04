@@ -21,7 +21,7 @@ Route::get('/recipes/{recipe}', function ($recipe) use ($recipes) {
 use Illuminate\Support\Facades\Route;
 
 $recipes = [
-    1 => [
+    'pasta carbonara' => [
         'name' => 'Pasta Carbonara',
         'image' => 'https://images.pexels.com/photos/546945/pexels-photo-546945.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         'description' => 'Un classico della cucina italiana, la Carbonara è amata in tutto il mondo per il suo sapore unico.',
@@ -35,7 +35,7 @@ $recipes = [
             'Scolare la pasta e mescolarla con il guanciale, poi aggiungere le uova e amalgamare.'
         ]
     ],
-    2 => [
+    'tiramisu' => [
         'name' => 'Tiramisù',
         'image' => 'https://images.pexels.com/photos/30372662/pexels-photo-30372662/free-photo-of-delizioso-rotolo-di-tiramisu-svizzero-su-piatto.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         'description' => 'Il dolce italiano per eccellenza, con strati di savoiardi e crema al mascarpone.',
@@ -50,7 +50,7 @@ $recipes = [
             'Spolverare con cacao amaro e lasciare in frigo per almeno 2 ore.'
         ]
     ],
-    3 => [
+    'lasagna alla bolognese' => [
         'name' => 'Lasagna alla Bolognese',
         'image' => 'https://images.pexels.com/photos/4079520/pexels-photo-4079520.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         'description' => 'La tradizione della lasagna con ragù di carne e besciamella.',
@@ -65,7 +65,7 @@ $recipes = [
             'Cuocere in forno per 45 minuti.'
         ]
     ],
-    4 => [
+    'risotto ai funghi' => [
         'name' => 'Risotto ai Funghi',
         'image' => 'https://images.pexels.com/photos/11190138/pexels-photo-11190138.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         'description' => 'Un risotto cremoso e ricco di sapore grazie ai funghi porcini.',
@@ -79,7 +79,7 @@ $recipes = [
             'Completare con burro e parmigiano.'
         ]
     ],
-    5 => [
+    'pizza margerita' => [
         'name' => 'Pizza Margherita',
         'image' => 'https://images.pexels.com/photos/12096782/pexels-photo-12096782.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         'description' => 'La pizza italiana più famosa, con pomodoro, mozzarella e basilico fresco.',
@@ -93,7 +93,7 @@ $recipes = [
             'Aggiungere basilico e olio d’oliva prima di servire.'
         ]
     ],
-    6 => [
+    'zuppa di lenticchie' => [
         'name' => 'Zuppa di Lenticchie',
         'image' => 'https://images.pexels.com/photos/2960581/pexels-photo-2960581.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         'description' => 'Un piatto sano e nutriente, ricco di proteine grazie alle lenticchie.',
@@ -107,7 +107,7 @@ $recipes = [
             'Aggiustare di sale e pepe prima di servire.'
         ]
     ],
-    7 => [
+    'pollo al curry' => [
         'name' => 'Pollo al Curry',
         'image' => 'https://images.pexels.com/photos/9218754/pexels-photo-9218754.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         'description' => 'Un piatto speziato e ricco di sapore, perfetto per gli amanti dei piatti esotici.',
@@ -121,7 +121,7 @@ $recipes = [
             'Servire con riso basmati.'
         ]
     ],
-    8 => [
+    'crostata di marmellata' => [
         'name' => 'Crostata di Marmellata',
         'image' => 'https://images.pexels.com/photos/4040695/pexels-photo-4040695.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         'description' => 'Un dolce semplice ma goloso, perfetto per ogni occasione.',
@@ -142,9 +142,13 @@ Route::get('/', function () use ($recipes) {
     return view('pages.homepage', ['recipes' => $recipes]);
 });
 
-Route::get('/recipes/{id}', function ($id) use ($recipes) {
-    return view('pages.recipe', ['recipe' => $recipes[$id], 'recipes' => $recipes]);
+Route::get('/recipes/{slug}', function ($slug) use ($recipes) {
+    return view('pages.recipe', ['recipe' => $recipes[$slug], 'recipes' => $recipes]);
 });
+
+/* Route::get('/recipes/{id}', function ($id) use ($recipes) {
+    return view('pages.recipe', ['recipe' => $recipes[$id], 'recipes' => $recipes]);
+}); */
 
 
 
